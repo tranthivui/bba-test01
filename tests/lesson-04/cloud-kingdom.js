@@ -1,0 +1,10 @@
+let playerName='Mairo';
+let currentLives=3;
+const level1=25;
+const level2=30;
+const level3=45;
+let sumCoin=level1+level2+level3;
+let avgCoin=sumCoin/3;
+// console.log("Sum coin: "+sumCoin);
+// console.log("Avg coin: "+avgCoin);
+console.log("Remain coin: "+sumCoin%3);
