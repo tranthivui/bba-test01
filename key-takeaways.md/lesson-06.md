@@ -131,3 +131,132 @@ function tinhDienTich(dai, rong){
 ```
 ### 4.2 Sử dụng
 - Gọi hàm: `tinhDienTich(3,5);`
+
+### 4.3 Một số hàm trong array
+#### 4.3.1 map()
+- map(): tạo mảng mới bằng cách áp dụng một hàm lên từng phần tử của mảng gốc. Trả về mảng mới có cùng độ dài
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(num => num * 2);
+
+const students = ['An', 'Binh', 'Cuong'];
+const studentList = students.map((name, index) => ({
+    id: index + 1,
+    name: name,
+    code: `SV001${index + 1}`
+}));
+console.log(studentList);
+```
+*_Note:_* Cú pháp array.map((element, index, array) => {});
+- element: giá trị phẳn tử
+- index: vị trí của phần tử hiện tại
+- arrray: mảnh đang được duyệt
+
+#### 4.3.2 filter()
+- filter(): Tạo mảng mới chỉ chứa các phần tử thỏa mãn điều kiện trong hàm callback. Trả về mảng đã được lọc
+```javascript
+const numbers=[1,2,3,4,5,6,7,8,9,10];
+const evenNumber=numbers.filter(num => num%2===0);
+console.log(numbers);
+console.log(evenNumber);
+```
+#### 4.3.3 find()
+- find(): Tìm và trả về phần tử đầu tiên trong mảng thỏa mãn điều kiện. Trả về undefined nếu không tìm thấy
+```javascript
+const numbers=[1,2,3,4,5,6,7,8,9,10];
+const evenNumber=numbers.find(num => num%2===0);
+console.log(evenNumber);
+```
+#### 4.3.4 reduce()
+- reduce(): Duyệt qua mảng và tích lũy các phần tử thành một giá trị duy nhất(số, chuỗi, object…) dựa trên hàm callback
+```javascript
+const numbers=[1,2,3,4,5,6,7,8,9,10];
+const sum=numbers.reduce((accumulator,current) => {
+    console.log(`accumulator: ${accumulator}, current: ${current}`);
+    return accumulator+current;
+},0);
+console.log(sum);
+```
+- Đầu tiên gán accumulator=0
+- Sau mỗi vòng chạy thì lấy accumulator+giá trị hiện tại đang duyệt
+#### 4.3.4 some()
+- some(): Kiểm tra xem có ít nhất một phần tử trong mảng thỏa mãn điều kiện hay không. Trả về true/false
+*_NOTE:_* Dừng ngay khi tìm thấy
+```javascript
+const numbers=[1,2,3,4,5];
+const hasEve=numbers.some(number => number%2===0);
+if (hasEve){
+    console.log("Co so chan");
+}else{
+    console.log("Ko co so chan")
+}
+```
+#### 4.3.5 every()
+- every(): Kiểm tra xem tất cả các phần tử trong mảng có thỏa mãn điều kiện hay không. Trả về true/false
+```javascript
+const numbers=[1,2,3,4,5];
+const hasEve=numbers.every(number => number%2===0);
+if (hasEve){
+    console.log("Tat ca la so chan");
+}else{
+    console.log("Co phan tu la so le")
+}
+```
+#### 4.3.6 sort()
+- sort(): Sắp xếp các phần tử trong mảng theo thứ tự(mặc định là alphabet/tăng dần). Thay đổi mảng gốc
+```javascript
+const numbers=[1,2,5,4,3];
+console.log(`Mang truoc khi sort: ${numbers}`);
+numbers.sort();
+console.log(`Mang sau khi sort: ${numbers}`);
+```
+*_NOTE:_* Nếu mảng [10, 5, 40, 25, 1000, 1] -> khi sort thì sẽ là [1,10,1000,25,40,5] -> bị sai -> cần dùng compare function
+```javascript
+const numbers=[10,5,40,25,1000,1];
+const sortIncreare=numbers.map(num => num);
+const sortDecreare=numbers.map(num => num);
+console.log("*******Sort sai*******");
+console.log(`Mang truoc khi sort: ${numbers}`);
+numbers.sort();
+console.log(`Mang sau khi sort: ${numbers}`);
+
+console.log("*******Sort dung tang dan*******");
+console.log(`Mang truoc khi sort: ${sortIncreare}`);
+sortIncreare.sort((a,b) => a-b);
+console.log(`Mang sau khi sort: ${sortIncreare}`);
+
+console.log("*******Sort dung giam dan*******");
+console.log(`Mang truoc khi sort: ${sortDecreare}`);
+sortDecreare.sort((a,b) => b-a);
+console.log(`Mang sau khi sort: ${sortDecreare}`);
+```
+#### 4.3.7 push()
+- push(): Thêm một hoặc nhiều phần tử vào cuối mảng. Thay đổi mảng gốc và trả về độ dài mới
+```javascript
+const numbers=[10,5,40,25,1000,1];
+numbers.push(30,60,90);
+console.log(numbers);
+```
+#### 4.3.8 pop()
+- pop(): Xóa và trả về phần tử cuối cùng của mảng. Thay đổi mảng gốc và làm giảm độ dài.
+Nếu mảng rỗng và Pop thì trả về undefined
+```javascript
+const numbers=[10,5,40,25,1000,1];
+numbers.pop();
+console.log(numbers);
+```
+#### 4.3.9 shift()
+- shift(): Xóa và trả về phần tử đầu tiên của mảng. Thay đổi mảng gốc và làm giảm độ dài.
+Nếu mảng rỗng và shift thì trả về undefined
+```javascript
+const numbers=[10,5,40,25,1000,1];
+numbers.shift();
+console.log(numbers);
+```
+#### 4.3.10 unshift()
+- unshift: Thèm một hoặc nhiều phần tử vào đầu mảng. Thay đổi mảng gốc và trả về độ dài mới của mảng
+```javascript
+const numbers=[10,5,40,25,1000,1];
+numbers.unshift(90,102,88,50);
+console.log(numbers);
+```
