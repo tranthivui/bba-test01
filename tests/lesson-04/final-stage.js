@@ -1,7 +1,7 @@
 function findPairsDivisibleBy17() {
     const list = new Array();
-    for (let i = 0; i <= 100; i++) {
-        for (let j = 0; j <= 100; j++) {
+    for (let i = 1; i <= 100; i++) {
+        for (let j = 1; j <= 100; j++) {
             if ((i + j) % 17 === 0) {
                 let capSo = {
                     soA: i,
