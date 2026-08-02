@@ -1,4 +1,4 @@
-let playerName='Mairo';
+let playerName='Mario';
 let currentLives=3;
 const level1=25;
 const level2=30;
